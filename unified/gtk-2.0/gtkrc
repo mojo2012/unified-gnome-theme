@@ -738,6 +738,25 @@ style "murrine-wide-dark"	=	"murrine-dark"	{ xthickness = 2 ythickness = 2 }
 style "murrine-wider-dark"	=	"murrine-dark"	{ xthickness = 3 ythickness = 3 }
 
 
+style "firefox-slimdown-workaround" {
+	xthickness = 3
+	ythickness = 4
+}
+widget "*Mozilla*"			style "firefox-slimdown-workaround"
+
+style "firefox-button" {
+	ythickness = 4
+}
+#widget "*Mozilla*Button*"		style "firefox-button"
+
+
+style "eclipse-slimdown-workaround" {
+	xthickness = 3
+	ythickness = 4
+}
+#widget "*Eclipse*"			style "eclipse-slimdown-workaround"
+
+
 include "Apps/eog.rc"
 include "Apps/gedit.rc"
 include "Apps/gnome-terminal.rc"

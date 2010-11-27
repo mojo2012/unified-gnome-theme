@@ -762,7 +762,7 @@ style "top-panel" {
 }
 
 widget "*PanelWidget*" style "top-panel"
-#widget "*PanelApplet*" style "top-panel"
+widget "*PanelApplet*" style "top-panel"
 widget "*fast-user-switch-applet*" style "top-panel"
 
 include "Apps/eog.rc"

@@ -689,7 +689,7 @@ style "sidebar"
 	bg[NORMAL]				= @sidebar_color
 	text[NORMAL]				= mix (0.3, @sidebar_color, @text_color)
 
-	font_name 	                  	= "9"
+	font_name 	                  	= "8.5"
 
 	GtkTreeView::odd_row_color		= @sidebar_color
 	GtkTreeView::even_row_color		= @sidebar_color

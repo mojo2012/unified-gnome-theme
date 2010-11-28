@@ -765,6 +765,34 @@ widget "*PanelWidget*" style "top-panel"
 widget "*PanelApplet*" style "top-panel"
 widget "*fast-user-switch-applet*" style "top-panel"
 
+
+style "openoffice-scrollbar-fix" {
+	xthickness = 20
+	ythickness = 20
+
+	GtkScrollbar		::slider_width 				= 12
+	GtkScrollbar		::min-slider-length			= 30
+
+
+	GtkScrollbar		::has-backward-stepper 			= 1
+	GtkScrollbar		::has-forward-stepper			= 1 
+
+	GtkScrolledWindow	::scrollbar-spacing			= 0
+	GtkScrolledWindow	::scrollbars-within-bevel		= 0
+
+	bg[ACTIVE]              = shade (1.3, @bg_color)	# Trough color
+	bg[NORMAL]              = shade(0.95, @selected_bg_color)
+	bg[PRELIGHT]            = @selected_bg_color
+	text[NORMAL]            = shade (0.4, @bg_color)	# Arrow Color
+
+	engine "murrine" {
+		gradient_shades     = {1.08,0.97,0.95,0.8}
+		roundness		= 6
+		trough_shades	    = { 0.9, 1.1 }
+	}
+}
+widget "*OOoFixed*" style	"openoffice-scrollbar-fix"
+
 include "Apps/eog.rc"
 include "Apps/gedit.rc"
 include "Apps/gnome-terminal.rc"

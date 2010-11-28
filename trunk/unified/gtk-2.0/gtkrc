@@ -793,6 +793,12 @@ style "openoffice-scrollbar-fix" {
 }
 widget "*OOoFixed*" style	"openoffice-scrollbar-fix"
 
+style "swt-fix" {
+	xthickness = 3
+	ythickness = 4
+}
+widget "*SwtFixed*" style	"swt-fix"
+
 include "Apps/eog.rc"
 include "Apps/gedit.rc"
 include "Apps/gnome-terminal.rc"

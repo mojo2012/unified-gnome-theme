@@ -10,7 +10,7 @@ gtk_color_scheme	= "link_color:#08c"							# Hyperlinks
 gtk_color_scheme	= "frame_color:#D1D1D1\ninactive_frame_color:#D1D1D1"			# Fix for Chrome
 gtk_color_scheme	= "bg_color_dark:#383838\ntext_color_dark:#FFFFFF"			# Dark colors
 
-gtk-icon-sizes		= "gtk-menu=16,16:\ngtk-button=1,1:\ngtk-dnd=16,16:\npanel-menu=16,16:\npanel=16,16:\ngtk-dialog=40,40:\ngtk-large-toolbar=24,24:\ngtk-small-toolbar=16,16"							# Set icon size for button without text
+gtk-icon-sizes		= "gtk-menu=16,16:\ngtk-button=14,14:\ngtk-dnd=16,16:\npanel-menu=16,16:\npanel=16,16:\ngtk-dialog=40,40:\ngtk-large-toolbar=24,24:\ngtk-small-toolbar=16,16"							# Set icon size for button without text
 gtk-button-images	= 0									# Disables icons for buttons with text
 gtk-toolbar-style	= 0									# Disables text in toolbar
 gtk-auto-mnemonics	= 1									# Disables ugly lines under menu items
@@ -755,7 +755,7 @@ style "eclipse-slimdown-workaround" {
 	xthickness = 3
 	ythickness = 4
 }
-#widget "*Eclipse*"			style "eclipse-slimdown-workaround"
+#widget "*eclipse*"			style "eclipse-slimdown-workaround"
 
 style "top-panel" {
 	font_name = "Bold"
@@ -795,9 +795,27 @@ widget "*OOoFixed*" style	"openoffice-scrollbar-fix"
 
 style "swt-fix" {
 	xthickness = 3
-	ythickness = 4
+	ythickness = 3
 }
 widget "*SwtFixed*" style	"swt-fix"
+
+style "swt-notebook-tab-fix" {
+	xthickness = 3
+	ythickness = 0
+}
+widget "*SwtFixed*Notebook*" style	"swt-notebook-tab-fix"
+
+style "swt-entryfield-fix" {
+	xthickness = 3
+	ythickness = 4
+}
+widget "*SwtFixed*Entry*" style	"swt-entryfield-fix"
+
+style "swt-combobox-fix" {
+	xthickness = 3
+	ythickness = 3
+}
+widget "*SwtFixed*Combo*Entry*" style	"swt-combobox-fix"
 
 include "Apps/eog.rc"
 include "Apps/gedit.rc"

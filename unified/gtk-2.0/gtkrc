@@ -10,7 +10,9 @@ gtk_color_scheme	= "link_color:#08c"							# Hyperlinks
 gtk_color_scheme	= "frame_color:#D1D1D1\ninactive_frame_color:#D1D1D1"			# Fix for Chrome
 gtk_color_scheme	= "bg_color_dark:#383838\ntext_color_dark:#FFFFFF"			# Dark colors
 
-gtk-icon-sizes		= "gtk-menu=16,16:\ngtk-button=14,14:\ngtk-dnd=16,16:\npanel-menu=16,16:\npanel=16,16:\ngtk-dialog=40,40:\ngtk-large-toolbar=24,24:\ngtk-small-toolbar=16,16"							# Set icon size for button without text
+# Set icon size for button without text
+gtk-icon-sizes		= "gtk-menu=16,16:\ngtk-button=14,14:\ngtk-dnd=16,16:\npanel-menu=16,16:\npanel=16,16:\ngtk-dialog=40,40:\ngtk-large-toolbar=24,24:\ngtk-small-toolbar=16,16"
+
 gtk-button-images	= 0									# Disables icons for buttons with text
 gtk-toolbar-style	= 0									# Disables text in toolbar
 gtk-auto-mnemonics	= 1									# Disables ugly lines under menu items
@@ -350,6 +352,12 @@ style "toolbutton" {
 	GtkButton::child-displacement-x 	= 0
 	GtkButton::child-displacement-y 	= 0
 
+	GtkButtonBox   ::child_min_height     = 0
+	GtkButtonBox   ::child_internal_pad_x = 0
+	GtkButtonBox   ::child_internal_pad_y = 0
+
+	GtkButton::inner-border = {3, 3, 0, 0}
+
 	GtkButton::interior-focus = 0
 
 	#engine "murrine" {
@@ -357,8 +365,96 @@ style "toolbutton" {
 	#	gradient_shades     = {1.0,1.0,1.0,1.0} # default: {1.1,1.0,1.0,1.1}
 	#	highlight_shade     = 1.0  # set highlight amount for buttons or widgets
 	#}
+
+	engine "pixmap"
+	{	
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= PRELIGHT
+			file				= "/toolbutton/toolbutton_prelight.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		}
+	  
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= ACTIVE
+			file				= "/toolbutton/toolbutton_pressed.png"
+			border				= { 3, 3, 3, 3 }
+			stretch         	= TRUE
+		}  
+
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= INSENSITIVE
+			file				= "/toolbutton/toolbutton_normal.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		} 
+	}
 }
-widget_class "*GtkToolbar*GtkButton*" 		style "toolbutton"
+widget_class "*GtkToolbar*GtkButton" 		style "toolbutton"
+
+style "toggle-toolbutton" {
+	engine "pixmap" {
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= PRELIGHT
+			file				= "/nautilus/mode_prelight.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		}
+	  
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= NORMAL
+			file				= "/nautilus/mode_normal.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		}
+	
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= ACTIVE
+			file				= "/nautilus/mode_pressed.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		}  
+
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= INSENSITIVE
+			file				= "/nautilus/mode_normal.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		} 
+
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= SELECTED
+			file				= "/nautilus/mode_pressed.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		}
+	}
+}
+widget_class "*GtkToolbar*GtkToggleButton" 	style "toggle-toolbutton"
 
 style "frame-title"
 {
@@ -415,7 +511,7 @@ class "GtkHScrollbar"  				style "scrollbar"
 
 style "menu" {
 	GtkMenu        ::horizontal-padding   = 0
-	GtkMenu        ::vertical-padding     = 4
+	GtkMenu        ::vertical-padding     = 3
 
 	GtkMenu::horizontal-offset = -1
 	GtkMenu::vertical-offset = 0
@@ -511,6 +607,9 @@ widget "xfwm4-tabwin*"				style "xfwm4-tabwin"
 
 style "notebook"
 {
+	xthickness = 0
+	ythickness = 0
+
 	bg[NORMAL]				= shade (1.06, @bg_color)	# selected tab entire
 	bg[ACTIVE]				= shade (0.85, @bg_color)	# unselected tab
 
@@ -521,8 +620,12 @@ style "notebook"
 widget_class "*<GtkNotebook>*<GtkEventBox>"     style "notebook"
 widget_class "*<GtkNotebook>*<GtkDrawingArea>"  style "notebook"
 widget_class "*<GtkNotebook>*<GtkLayout>"       style "notebook"
-widget_class "*<GtkNotebook>*<GtkLabel>"	style "notebook"
 widget_class "*<GtkNotebook>"    		style "notebook"
+
+style "notebook-label" {
+	xthickness = 20
+}
+widget_class "*<GtkNotebook>*<GtkLabel>"	style "notebook-label"
 
 style "notebook-close"
 {

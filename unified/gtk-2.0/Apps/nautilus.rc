@@ -83,6 +83,10 @@ style "nautilus-notebook"
 {
 	xthickness		= 0
 	ythickness		= 0
+
+	engine "murrine" {
+		roundness = 7
+	}
 }
 
 style "nautilus-scale"

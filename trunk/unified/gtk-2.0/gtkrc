@@ -4,7 +4,7 @@
 
 gtk_color_scheme	= "bg_color:#D9D9D9\nselected_bg_color:#A9C3D9\nbase_color:#FFFFFF"	# Background, base
 gtk_color_scheme	= "fg_color:#4D4D4D\nselected_fg_color:#FFFFFF\ntext_color:#4D4D4D"	# Foreground, text
-gtk_color_scheme 	= "sidebar_color:#e2e2e2"						# Sidebar
+gtk_color_scheme 	= "sidebar_color:#E3E8ED"						# Sidebar
 gtk_color_scheme	= "tooltip_bg_color:#000\ntooltip_fg_color:#FFF" 			# Tooltips
 gtk_color_scheme	= "link_color:#08c"							# Hyperlinks
 gtk_color_scheme	= "frame_color:#D1D1D1\ninactive_frame_color:#D1D1D1"			# Fix for Chrome
@@ -58,7 +58,7 @@ style "default"
 
 	GtkNotebook		::tab-overlap 				= 0
 
-	GtkPaned		::handle-size          			= 6
+	GtkPaned		::handle-size          			= 2
 
 	GtkProgressBar		::min-vertical-bar-width		= 10
 	GtkProgressBar		::min-horizontal-bar-height		= 10
@@ -785,9 +785,7 @@ widget_class "*<GtkListItem>*" 				style "murrine-fg-is-text-color-workaround"
 widget_class "*<GtkCList>" 				style "murrine-fg-is-text-color-workaround"
 
 
-style "sidebar"
-{
-
+style "sidebar" {
 	base[NORMAL]				= @sidebar_color
 	bg[NORMAL]				= @sidebar_color
 	text[NORMAL]				= mix (0.3, @sidebar_color, @text_color)
@@ -930,4 +928,5 @@ include "Apps/postler.rc"
 #include "Apps/rhythmbox.rc"
 include "Apps/steadyflow.rc"
 include "Apps/totem.rc"
+include "Apps/banshee.rc"
 

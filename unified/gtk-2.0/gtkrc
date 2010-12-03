@@ -207,7 +207,7 @@ style "button" {
 	GtkButton::child-displacement-y 	= 0
 	
 	ythickness = 3
-	xthickness = 3
+	xthickness = 9
 
 	GtkButton::interior-focus = 1
 

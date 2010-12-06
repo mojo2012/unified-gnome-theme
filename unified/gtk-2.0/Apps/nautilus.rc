@@ -182,13 +182,62 @@ style "nautilus-toolbutton"
 	ythickness = 0
 
 	GtkButton::child-displacement-y		= 0
-	GtkButton::inner-border			= { 0, 11, 0, 0}
+	GtkButton::inner-border			= { 8, 8, 0, 0}
 
-	engine "murrine"
+	engine "pixmap"
 	{	
-		contrast = 0.0
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= PRELIGHT
+			file				= "/nautilus/mode_prelight.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		}
+	  
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= NORMAL
+			file				= "/nautilus/mode_normal.png"
+			border				= { 10, 10, 10, 10 }
+			stretch         	= TRUE
+		}
+	
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= ACTIVE
+			file				= "/nautilus/mode_pressed.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		}  
+
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= INSENSITIVE
+			file				= "/nautilus/mode_normal.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		} 
+
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= SELECTED
+			file				= "/nautilus/mode_pressed.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		}
 	}
 }
+#widget_class "*Nautilus*Toolbar*Button*"	style "nautilus-toolbutton"
 
 style "nautilus-breadcrumbs"
 {
@@ -287,6 +336,12 @@ style "nautilus-right-slider"
 	}
 }
 
+style "nautilus-toolbar" {
+	#GtkToolbar	::button-relief		= GTK_RELIEF_NORMAL
+}
+widget_class	"*Nautilus*GtkToolbar*" 	style "nautilus-toolbar"
+
+
 widget		"*NautilusNavigationWindow"		style "nautilus-window-base"
 widget		"*Nautilus*Splitter"			style "nautilus-handle"
 widget_class	"*Nautilus*View*"			style "nautilus-view"
@@ -295,7 +350,7 @@ widget_class	"*Nautilus*Statusbar*"			style "nautilus-statusbar"
 widget_class	"*Nautilus*Scale*"			style "nautilus-scale"
 widget_class	"*Nautilus*Notebook"			style "nautilus-notebook"
 
-#widget_class	"*Nautilus*GtkToolbar*GtkButton*" 	style "nautilus-toolbutton"
+
 
 widget		"*GtkModeButton*"			style "nautilus-mode-button"
 

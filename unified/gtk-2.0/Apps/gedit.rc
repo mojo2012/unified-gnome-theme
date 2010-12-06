@@ -95,6 +95,25 @@ style "left-slider"
 
 }
 
+style "murrine-gedit-historyentry" {
+	xthickness = 4
+	ythickness = 3
+
+	GtkComboBox::arrow-size = 12
+	GtkComboBox::appears-as-list = 0
+
+	GtkComboBox::shadow_type = GTK_SHADOW_NONE
+}
+widget_class "*Gedit*HistoryEntry*"         		style "murrine-gedit-historyentry"
+
+style "murrine-gedit-historyentry-button" {
+	xthickness = 0
+	ythickness = 0
+
+	GtkButton::inner-border = {2, 1, 1, 1}
+}
+widget_class "*Gedit*HistoryEntry*GtkButton*"		style "murrine-gedit-historyentry-button"
+
 style "right-slider"
 {	
 	xthickness = 0

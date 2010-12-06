@@ -71,8 +71,8 @@ style "default"
 	GtkScale		::trough-side-details			= 1
 
 	GtkScrollbar		::min-slider-length			= 20
-	GtkScrollbar		::has-backward-stepper 			= 0  
-	GtkScrollbar		::has-forward-stepper			= 0 
+	GtkScrollbar		::has-backward-stepper 			= 1
+	GtkScrollbar		::has-forward-stepper			= 1
 
 	GtkScrolledWindow	::scrollbar-spacing			= 0
 	GtkScrolledWindow	::scrollbars-within-bevel		= 1
@@ -134,7 +134,7 @@ style "default"
 		reliefstyle		= 3		# 0 = flat, 1 = inset, 2 = shadow, 3 = shadow with gradient, 4 = stronger shadow with gradient
 		rgba			= FALSE		# Alpha transparency
 		roundness		= 2		# 0 = square
-		scrollbarstyle		= 0		# 0 = nothing
+		scrollbarstyle		= 3		# 0 = nothing
 		separatorstyle		= 1
 		shadow_shades		= { 2.0, 1.0 }
 		sliderstyle		= 0     	# 0 = nothing added
@@ -195,10 +195,6 @@ class "GtkEntry"    				style "entry"
 
 
 style "button" {
-	GtkButtonBox   ::child_min_height     = 0
-	GtkButtonBox   ::child_internal_pad_x = 6
-	GtkButtonBox   ::child_internal_pad_y = 0
-
 	GtkButton::default-border = {0, 0, 0, 0}
 	GtkButton::default-outside-border = {0, 0, 0, 0}
 	GtkButton::inner-border = {0, 0, 0, 0}
@@ -207,7 +203,7 @@ style "button" {
 	GtkButton::child-displacement-y 	= 0
 	
 	ythickness = 3
-	xthickness = 9
+	xthickness = 3
 
 	GtkButton::interior-focus = 1
 
@@ -227,12 +223,21 @@ style "button" {
 		old_arrowstyle			= FALSE
 	}
 }
-widget_class "*<GtkButton>*"      		style "button"
-widget_class "*<GtkButtonBox>*"      		style "button"
+class "GtkButton"      		style "button"
+
+style "button-box" {
+	xthickness = 0
+	ythickness = 0
+
+	GtkButtonBox   ::child_min_height     = 0
+	GtkButtonBox   ::child_internal_pad_x = 6
+	GtkButtonBox   ::child_internal_pad_y = 0
+}
+class "GtkButtonBox"      		style "button-box"
 
 
 style "combo" {
-	xthickness = 30
+	xthickness = 3
 	ythickness = 1
 	#
 
@@ -257,7 +262,7 @@ style "color-button" {
 	xthickness = 1
 	ythickness = 1
 }
-widget_class "*GtkColorButton*"         		style "color-button"
+class "GtkColorButton"         		style "color-button"
 
 style "combobox" {
 	xthickness = 2
@@ -284,41 +289,31 @@ style "combobox" {
 		old_arrowstyle			= FALSE
 	}
 }
-widget_class "*GtkComboBox*"         		style "combobox"
+class "GtkComboBox"         		style "combobox"
 
 style "combobox-dropdown-button" {
 	xthickness = 3
 	ythickness = 3
 
-	GtkButton::inner-border = {2, 1, 1, 1}
+	#GtkButton::inner-border = {2, 1, 1, 1}
 
-	engine "murrine"  {
-		roundness           = 2
-	}
+	#engine "murrine"  {
+	#	roundness           = 2
+	#}
 }
-#widget_class "*GtkComboBox*GtkButton*"		style "combobox-dropdown-button"
+#widget_class "*ComboBox*Button*"		style "combobox-dropdown-button"
 #widget_class "*GtkComboBoxEntry*"		style "murrine-comboboxentry"
-#widget_class "*Gedit*HistoryEntry*"         		style "murrine-gedit-historyentry"
+
 
 
 style "optionmenu" {
 	xthickness = 0
-	ythickness = 0
+	ythickness = 30
 
 	GtkOptionMenu::indicator-size = 6
 	GtkOptionMenu::indicator-spacing = 0
 }
-#widget_class "*GtkOptionMenu*"         		style "optionmenu"
-
-style "gedit-historyentry-button" {
-	xthickness = 3
-	ythickness = 3
-
-	GtkButton::inner-border = {2, 2, 0, 0}
-
-}
-#widget_class "*Gedit*HistoryEntry*GtkButton*"		style "gedit-historyentry-button"
-
+#class "GtkOptionMenu"         		style "optionmenu"
 
 
 style "murrine-toolbar"  {
@@ -366,8 +361,67 @@ style "toolbutton" {
 	#	highlight_shade     = 1.0  # set highlight amount for buttons or widgets
 	#}
 
+	engine "pixmap" {
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= NORMAL
+			file				= "/toolbutton/toolbutton_normal.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		} 
+
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= PRELIGHT
+			file				= "/toolbutton/toolbutton_prelight.png"
+#			file				= "/toolbutton/toolbutton_normal.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		}
+	  
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= ACTIVE
+			file				= "/toolbutton/toolbutton_pressed.png"
+			border				= { 3, 3, 3, 3 }
+			stretch         	= TRUE
+		}  
+
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= INSENSITIVE
+			file				= "/toolbutton/toolbutton_normal.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		} 
+	}
+}
+class "GtkToolButton"				style "toolbutton"
+widget_class "*GtkToolbar*GtkButton" 		style "toolbutton"
+
+style "toggle-button" {
+	xthickness = 0
+
 	engine "pixmap"
-	{	
+	{
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= NORMAL
+			file				= "/toolbutton/toolbutton_normal.png"
+			border				= { 3, 13, 3, 3 }
+			stretch         	= TRUE
+		} 
+
 		image
 		{
 			function        	= BOX
@@ -397,52 +451,7 @@ style "toolbutton" {
 			border				= { 3, 13, 3, 3 }
 			stretch         	= TRUE
 		} 
-	}
-}
-widget_class "*GtkToolbar*GtkButton" 		style "toolbutton"
-
-style "toggle-toolbutton" {
-	engine "pixmap" {
-		image
-		{
-			function        	= BOX
-			recolorable     	= TRUE
-			state				= PRELIGHT
-			file				= "/nautilus/mode_prelight.png"
-			border				= { 3, 13, 3, 3 }
-			stretch         	= TRUE
-		}
-	  
-		image
-		{
-			function        	= BOX
-			recolorable     	= TRUE
-			state				= NORMAL
-			file				= "/nautilus/mode_normal.png"
-			border				= { 3, 13, 3, 3 }
-			stretch         	= TRUE
-		}
-	
-		image
-		{
-			function        	= BOX
-			recolorable     	= TRUE
-			state				= ACTIVE
-			file				= "/nautilus/mode_pressed.png"
-			border				= { 3, 13, 3, 3 }
-			stretch         	= TRUE
-		}  
-
-		image
-		{
-			function        	= BOX
-			recolorable     	= TRUE
-			state				= INSENSITIVE
-			file				= "/nautilus/mode_normal.png"
-			border				= { 3, 13, 3, 3 }
-			stretch         	= TRUE
-		} 
-
+		
 		image
 		{
 			function        	= BOX
@@ -452,9 +461,9 @@ style "toggle-toolbutton" {
 			border				= { 3, 13, 3, 3 }
 			stretch         	= TRUE
 		}
-	}
+	}	
 }
-widget_class "*GtkToolbar*GtkToggleButton" 	style "toggle-toolbutton"
+widget_class "*GtkToolbar*GtkToggleButton" 	style "toggle-button"
 
 style "frame-title"
 {
@@ -486,28 +495,58 @@ widget_class "*<GtkProgressBar>"       		style "progressbar"
 
 style "scrollbar"
 {
-	bg[SELECTED]				= shade (0.6, @base_color)
-	bg[ACTIVE]				= @base_color
-	
+#	xthickness = 10
+
+	GtkScrollbar				:: slider_width = 9
+	GtkScrollbar				:: min-slider-length	= 30
+	#GtkScrollbar				:: has-secondary-backward-stepper = 1
+
+	bg[ACTIVE]              = shade (1.3, @bg_color)	# Trough color
+	bg[NORMAL]              = shade(0.95, @selected_bg_color)
+	bg[PRELIGHT]            = @selected_bg_color
+	text[NORMAL]            = shade (0.4, @bg_color)	# Arrow Color
+
 	engine "murrine" {
+		gradient_shades			= {1.08,0.97,0.95,0.8}
 		roundness			= 6
-		gradient_shades			= {1.0,1.0,1.0,1.0}
-		highlight_shade			= 1.0
-		glow_shade			= 1.0
-		reliefstyle			= 0
-		gradient_colors			= FALSE
-    		lightborder_shade		= 1.0
-		lightborderstyle		= 0
-		trough_shades	        	= { 1.3, 1.3}
-		border_shades			= { 2.0, 2.0}
-		contrast			= 0.0
-		prelight_shade			= 0.65
+		trough_shades			= { 0.9, 1.1 }
+#		contrast			= 1.1
 	}
+
+	#bg[SELECTED]				= shade (0.6, @base_color)
+	#bg[ACTIVE]				= @base_color
+	
+#	engine "murrine" {
+#		roundness			= 6
+#		gradient_shades			= {1.0,1.0,1.0,1.0}
+#		highlight_shade			= 1.0
+#		glow_shade			= 1.0
+#		reliefstyle			= 0
+#		gradient_colors			= FALSE
+ #   		lightborder_shade		= 1.0
+#		lightborderstyle		= 0
+#		trough_shades	        	= { 1.3, 1.3}
+#		border_shades			= { 2.0, 2.0}
+#		contrast			= 0.0
+#		prelight_shade			= 0.65
+#	}
 }
 class "GtkScrollbar"   				style "scrollbar"
 class "GtkVScrollbar"  				style "scrollbar"
 class "GtkHScrollbar"  				style "scrollbar"
 
+style "scrolled-window" {
+	xthickness = 1
+	ythickness = 1
+
+	GtkScrolledWindow::scrollbar-spacing = 0
+	GtkScrolledWindow::scrollbars-within-bevel = 1
+
+	engine "murrine" {
+		
+	}
+}
+class "GtkScrolledWindow"			style "scrolled-window"
 
 style "menu" {
 	GtkMenu        ::horizontal-padding   = 0

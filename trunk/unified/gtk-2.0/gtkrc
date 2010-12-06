@@ -1,6 +1,7 @@
 # Theme:		unified
 # Author:		Matthias Fuchs <meister.fuchs@gmail.com	>
 # License:		GPL
+# Based on: 		elementary theme
 
 gtk_color_scheme	= "bg_color:#D9D9D9\nselected_bg_color:#A9C3D9\nbase_color:#FFFFFF"	# Background, base
 gtk_color_scheme	= "fg_color:#4D4D4D\nselected_fg_color:#FFFFFF\ntext_color:#4D4D4D"	# Foreground, text
@@ -26,7 +27,7 @@ style "default"
 	xthickness		= 1
 	ythickness		= 1
 
-	#GtkDialog::action-area-border		= 6
+	GtkDialog::action-area-border		= 6
 	#GtkDialog::button-spacing		= 0
 	#GtkDialog::content-area-border		= 4
 	#GtkDialog::content-area-spacing		= 0
@@ -465,6 +466,14 @@ style "toggle-button" {
 }
 widget_class "*GtkToolbar*GtkToggleButton" 	style "toggle-button"
 
+style "checkbutton" {
+	#bg[NORMAL]	=  shade (0.75, @bg_color)		# disabled frame
+	#bg[PRELIGHT]	=  @bg_color
+	
+}
+class "GtkCheckButton"				style "checkbutton"
+
+
 style "frame-title"
 {
 	fg[NORMAL] 				= lighter (@fg_color)
@@ -647,7 +656,7 @@ widget "xfwm4-tabwin*"				style "xfwm4-tabwin"
 style "notebook"
 {
 	xthickness = 0
-	ythickness = 0
+	ythickness = 1
 
 	bg[NORMAL]				= shade (1.06, @bg_color)	# selected tab entire
 	bg[ACTIVE]				= shade (0.85, @bg_color)	# unselected tab

@@ -341,6 +341,12 @@ style "nautilus-toolbar" {
 }
 widget_class	"*Nautilus*GtkToolbar*" 	style "nautilus-toolbar"
 
+style "nautilus-togglebutton" {
+	engine "murrine" {
+	}
+}
+widget_class "*Nautilus*GtkToggleButton*"	style "nautilus-togglebutton"
+
 
 widget		"*NautilusNavigationWindow"		style "nautilus-window-base"
 widget		"*Nautilus*Splitter"			style "nautilus-handle"

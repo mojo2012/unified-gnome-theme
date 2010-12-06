@@ -1,9 +1,12 @@
+widget "*TerminalWindow"				style "murrine-dark"
+
 style "terminal-screen" = "murrine-dark"
 {
 	base[NORMAL]				= "#000000"	
 	
 	TerminalScreen::background-darkness	= 0.75
 }
+widget "*TerminalWindow.*.TerminalScreen*"              style "terminal-screen"
 
 style "terminal-scrollbar"
 {
@@ -14,12 +17,7 @@ style "terminal-scrollbar"
 		prelight_shade			= 1.35
 	}
 }
-
-widget "*TerminalWindow"				style "murrine-dark"
 widget "*TerminalWindow.*.GtkVScrollbar"		style "terminal-scrollbar"
-widget "*TerminalWindow.*.TerminalScreen*"              style "terminal-screen"
-
-
 
 
 

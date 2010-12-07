@@ -11,9 +11,16 @@ style "gedit-frame"
 }
 
 style "encodings-combobox" {
-	xthickness = 0
+	xthickness = 1
 	ythickness = 1
 }
+#widget_class "*<GeditEncodingsComboBox>*"     		style "encodings-combobox"
+
+style "combobox" {
+#	xthickness = 3
+	ythickness = 10
+}
+#widget_class "*GtkFileChooser*.*GtkComboBox*"	style "combobox"
 
 style "pathbar"
 {
@@ -131,20 +138,17 @@ style "right-slider"
 	}
 }
 
-style "combobox" {
-#	xthickness = 3
-	ythickness = 0
-}
-widget_class "*GtkFileChooser*.*GtkComboBox*"	style "combobox"
-
 
 widget_class "*Gedit*.<GtkFrame>*"     			style "gedit-frame"
 widget_class "*Gedit*.<GtkScrolledWindow>"     		style "murrine-thin"
 widget_class "*Gedit*.<GtkArrow>*"     			style:highest "murrine-default"
-widget_class "*<GeditEncodingsComboBox>*"     		style "encodings-combobox"
+
 
 #widget_class "*GeditFileChooserDialog*GtkPathBar*.*ToggleButton*"     	style "pathbar"
 #widget_class "GeditFileChooserDialog*GtkPathBar*GtkButton*"			style "left-slider" 
 #widget_class "GeditFileChooserDialog*GtkPathBar*right_slider*"		style "right-slider"
 
-
+style "gedit" {
+	GtkComboBox::appears-as-list = 0
+}
+widget_class "*Gedit*"     			style "gedit"

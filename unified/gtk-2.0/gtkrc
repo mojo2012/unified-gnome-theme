@@ -12,7 +12,7 @@ gtk_color_scheme	= "frame_color:#D1D1D1\ninactive_frame_color:#D1D1D1"			# Fix f
 gtk_color_scheme	= "bg_color_dark:#383838\ntext_color_dark:#FFFFFF"			# Dark colors
 
 # Set icon size for button without text
-gtk-icon-sizes		= "gtk-menu=16,16:\ngtk-button=14,14:\ngtk-dnd=16,16:\npanel-menu=16,16:\npanel=16,16:\ngtk-dialog=40,40:\ngtk-large-toolbar=24,24:\ngtk-small-toolbar=16,16"
+gtk-icon-sizes		= "gtk-menu=16,16:\ngtk-button=14,14:\ngtk-dnd=16,16:\npanel-menu=14,14:\npanel=16,16:\ngtk-dialog=40,40:\ngtk-large-toolbar=24,24:\ngtk-small-toolbar=16,16"
 
 gtk-button-images	= 0									# Disables icons for buttons with text
 gtk-toolbar-style	= 0									# Disables text in toolbar
@@ -46,7 +46,7 @@ style "default"
 	GtkCheckButton		::indicator-size       			= 15
 
 	GtkEntry		::honors-transparent-bg-hint 		= 1
-	GtkEntry		::progress-border			= { 3, 3, 3, 3 }
+	GtkEntry		::progress-border			= { 0, 0, 0, 0 }
 	GtkEntry		::state-hint 				= 0
 
 	GtkImage		::x-ayatana-indicator-dynamic 		= 1
@@ -119,7 +119,7 @@ style "default"
 		colorize_scrollbar	= TRUE
 		contrast		= 1.1
 		default_button_color	= shade (1.12, @selected_bg_color)
-		focusstyle		= 3		
+		focusstyle		= 3
 		glazestyle		= 0
 		gradient_shades		= {1.18,1.09,1.08,0.9}
 		glowstyle		= 4
@@ -181,11 +181,9 @@ style "entry" {
 	ythickness = 4
 	
 	GtkEntry		::honors-transparent-bg-hint 		= 1
-	GtkEntry		::progress-border			= { 3, 3, 3, 3 }
+	GtkEntry		::progress-border			= { 0, 0, 0, 0 }
 	GtkEntry		::state-hint 				= 0
-
-	GtkEntry::inner-border = {2, 2, 0, 0}
-	GtkEntry::honors-transparent-bg-hint = 1
+	GtkEntry		::inner-border				= {2, 2, 0, 0}
 
 	engine "aurora" { 		
 		curvature			= 2.0
@@ -207,24 +205,26 @@ style "button" {
 	xthickness = 3
 
 	GtkButton::interior-focus = 1
+	
+	bg[NORMAL]		= @bg_color
+	bg[PRELIGHT]		= @bg_color
+	bg[SELECTED]		= shade(0.9, @selected_bg_color)
+	bg[INSENSITIVE]		= @bg_color
+	bg[ACTIVE]		= @bg_color #shade (1.04, @bg_color)
 
-	#engine "murrine" {
-		#border_shades 			= {1.1, 0.9}
-		#contrast			= 1.25
-		#gradient_shades     		= {1.10,1.0,0.99,0.90}
-		#lightborderstyle		= 1
-		#textstyle			= 1
-	#}
-
-	engine "aurora" {
+	engine "murrine" {
 		#border_shades 			= {1.1, 0.9}
 		contrast			= 1.25
-		#gradient_shades     		= {1.10,1.0,0.99,0.90} 		
-		curvature			= 2.0
-		old_arrowstyle			= FALSE
+		gradient_shades     		= {1.12,1.02,1.01,0.88} 		
+		#curvature			= 2.0
 	}
 }
-class "GtkButton"      		style "button"
+class "GtkButton"      			style "button"
+
+style "togglebutton" {
+	
+}
+class "GtkToggleButton"      			style "togglebutton"
 
 style "button-box" {
 	xthickness = 0
@@ -236,85 +236,42 @@ style "button-box" {
 }
 class "GtkButtonBox"      		style "button-box"
 
-
-style "combo" {
-	xthickness = 3
-	ythickness = 1
-	#
-
-	GtkComboBox::appears-as-list = 1
-
-	GtkComboBox::arrow-size = 10
-}
-#widget_class "*GtkCombo*"         		style "combo"
-
-style "combo-dropdown-button" {
+style "combobox" {
 	xthickness = 3
 	ythickness = 3
 
-	GtkButton::inner-border = {0, 0, 0, 0}
+	GtkComboBox::appears-as-list = 1
 
-	engine "murrine"  {
+	GtkComboBox::arrow-size = 15
+}
+class "GtkComboBox"         		style "combobox"
+
+style "combobox-textentry" {
+	xthickness = 3
+	ythickness = 2
+
+	engine "aurora" { 		
+		curvature			= 2.0
+		old_arrowstyle			= FALSE
 	}
 }
-#widget_class "*GtkCombo*GtkButton"		style "combo-dropdown-button"
+widget_class "*<GtkComboBox>.*"         		style "combobox-textentry"
+
+
+style "comboboxentry" {
+	xthickness = 3
+	ythickness = 3
+
+	GtkComboBox::arrow-size = 15
+}
+widget_class "*<GtkComboBoxEntry>*"         		style "comboboxentry"
+
 
 style "color-button" {
 	xthickness = 1
 	ythickness = 1
 }
 class "GtkColorButton"         		style "color-button"
-
-style "combobox" {
-	xthickness = 2
-	ythickness = 1
-
-	GtkComboBox::arrow-size = 12
-	GtkComboBox::appears-as-list = 0
-
-	#GtkComboBox::shadow_type = GTK_SHADOW_NONE
-
-	engine "murrine" {
-		border_shades 			= {1.1, 0.9}
-		contrast			= 1.25
-		gradient_shades     		= {1.10,1.0,0.99,0.90}
-		lightborderstyle		= 1
-		textstyle			= 1
-	}
-
-	engine "aurora" {
-		#border_shades 			= {1.1, 0.9}
-		contrast			= 1.25
-		#gradient_shades     		= {1.10,1.0,0.99,0.90} 		
-		curvature			= 2.0
-		old_arrowstyle			= FALSE
-	}
-}
-class "GtkComboBox"         		style "combobox"
-
-style "combobox-dropdown-button" {
-	xthickness = 3
-	ythickness = 3
-
-	#GtkButton::inner-border = {2, 1, 1, 1}
-
-	#engine "murrine"  {
-	#	roundness           = 2
-	#}
-}
-#widget_class "*ComboBox*Button*"		style "combobox-dropdown-button"
-#widget_class "*GtkComboBoxEntry*"		style "murrine-comboboxentry"
-
-
-
-style "optionmenu" {
-	xthickness = 0
-	ythickness = 30
-
-	GtkOptionMenu::indicator-size = 6
-	GtkOptionMenu::indicator-spacing = 0
-}
-#class "GtkOptionMenu"         		style "optionmenu"
 
 
 style "murrine-toolbar"  {
@@ -408,7 +365,7 @@ style "toolbutton" {
 class "GtkToolButton"				style "toolbutton"
 widget_class "*GtkToolbar*GtkButton" 		style "toolbutton"
 
-style "toggle-button" {
+style "tool-togglebutton" {
 	xthickness = 0
 
 	engine "pixmap"
@@ -464,14 +421,23 @@ style "toggle-button" {
 		}
 	}	
 }
-widget_class "*GtkToolbar*GtkToggleButton" 	style "toggle-button"
+widget_class "*GtkToolbar*GtkToggleButton" 	style "tool-togglebutton"
 
-style "checkbutton" {
-	#bg[NORMAL]	=  shade (0.75, @bg_color)		# disabled frame
-	#bg[PRELIGHT]	=  @bg_color
-	
+style "checkbutton"  { #= "aurora-default"{
+	bg[ACTIVE]              = shade (1.3, @bg_color)	# Trough color
+	bg[NORMAL]              = shade(0.9, @bg_color)
+	bg[SELECTED]              = shade(0.9, @selected_bg_color)
+	bg[PRELIGHT]            = @bg_color
+
+	#GtkCheckButton::indicator-size = 15
+	#GtkCheckButton::indicator-spacing =1
+	engine "murrine" {
+		roundness			= 4
+		contrast			= 0.9
+	}
 }
-class "GtkCheckButton"				style "checkbutton"
+widget_class "*GtkCheckButton*"				style "checkbutton"
+widget_class "*GtkRadioButton*" 			style "checkbutton"
 
 
 style "frame-title"
@@ -482,16 +448,16 @@ widget_class "*.<GtkFrame>.<GtkLabel>" 		style "frame-title"
 
 style "progressbar" {
 	bg[ACTIVE]				= shade (0.75, @bg_color)
-	bg[SELECTED]				= @bg_color
+	bg[SELECTED]				= @selected_bg_color
 
 	xthickness = 0
 	ythickness = 0
 
 	engine "murrine" {
-		roundness 			= 100
+		roundness 			= 10
 		highlight_shade     		= 1.0 
 		lightborder_shade   		= 2.0
-		gradient_shades     		= {0.90,1.09,1.10,1.30}
+		gradient_shades     		= {1.30,0.95,1.0,1.05}
 		trough_shades       		= {1.00,1.16}
 		contrast			= 1.13
 		border_shades 			= {1.0, 0.9}
@@ -506,7 +472,7 @@ style "scrollbar"
 {
 #	xthickness = 10
 
-	GtkScrollbar				:: slider_width = 9
+	GtkScrollbar				:: slider_width = 10
 	GtkScrollbar				:: min-slider-length	= 30
 	#GtkScrollbar				:: has-secondary-backward-stepper = 1
 
@@ -515,30 +481,26 @@ style "scrollbar"
 	bg[PRELIGHT]            = @selected_bg_color
 	text[NORMAL]            = shade (0.4, @bg_color)	# Arrow Color
 
-	engine "murrine" {
-		gradient_shades			= {1.08,0.97,0.95,0.8}
-		roundness			= 6
-		trough_shades			= { 0.9, 1.1 }
-#		contrast			= 1.1
-	}
-
 	#bg[SELECTED]				= shade (0.6, @base_color)
 	#bg[ACTIVE]				= @base_color
 	
-#	engine "murrine" {
-#		roundness			= 6
-#		gradient_shades			= {1.0,1.0,1.0,1.0}
-#		highlight_shade			= 1.0
-#		glow_shade			= 1.0
-#		reliefstyle			= 0
-#		gradient_colors			= FALSE
- #   		lightborder_shade		= 1.0
-#		lightborderstyle		= 0
-#		trough_shades	        	= { 1.3, 1.3}
-#		border_shades			= { 2.0, 2.0}
-#		contrast			= 0.0
-#		prelight_shade			= 0.65
-#	}
+	engine "murrine" {
+		roundness			= 6
+		gradient_shades     		= {1.4,0.96,0.9,1.10}
+		#gradient_shades			= {1.0,1.0,1.0,1.0}
+		highlight_shade			= 1.0
+		glow_shade			= 1.0
+		reliefstyle			= 0
+		gradient_colors			= FALSE
+    		lightborder_shade		= 0.9
+		lightborderstyle		= 1
+		#trough_shades	        	= { 2.0, 1.1}	
+		trough_shades	        	= { 0.95, 1.1}
+		#border_shades			= { 2.0, 2.0}
+		border_shades 			= {1.0, 0.9}
+		contrast			= 0.4
+		prelight_shade			= 1.0
+	}
 }
 class "GtkScrollbar"   				style "scrollbar"
 class "GtkVScrollbar"  				style "scrollbar"
@@ -561,10 +523,10 @@ style "menu" {
 	GtkMenu        ::horizontal-padding   = 0
 	GtkMenu        ::vertical-padding     = 3
 
-	GtkMenu::horizontal-offset = -1
+	GtkMenu::horizontal-offset = -3
 	GtkMenu::vertical-offset = 0
 	
-	GtkMenu::double-arrows = 0
+	GtkMenu::double-arrows = FALSE
 
 	fg[PRELIGHT]				= @selected_fg_color
 	fg[SELECTED]				= @selected_fg_color
@@ -596,9 +558,9 @@ style "menu-item" {
 }
 widget_class "*<GtkMenuItem>*"          	style "menu-item"
 
-style "menu-menuitem" {
+style "combo-menuitem" {
 	xthickness = 1
-	ythickness = 3
+	ythickness = 30
 
 	fg[PRELIGHT] = @selected_fg_color
 	bg[SELECTED] = shade (0.98, @selected_bg_color)
@@ -607,7 +569,7 @@ style "menu-menuitem" {
 		roundness = 3
 	}
 }
-#widget_class "*<GtkMenuItem>*.*<GtkMenuItem>*"          	style "menu-menuitem"
+#widget_class "*<GtkComboBox>*.*<GtkMenuItem>*"          	style "combo-menuitem"
 
 style "menubar" {
 	ythickness = 3
@@ -619,6 +581,11 @@ style "menubar" {
 
 widget_class "*<GtkMenuBar>*"           	style "menubar"
 
+
+style "image" {
+	xthickness = 10
+}
+class "GtkImage"				style "image"
 
 style "menubar" {
 	fg[NORMAL] = "#3E3E3E"
@@ -655,25 +622,30 @@ widget "xfwm4-tabwin*"				style "xfwm4-tabwin"
 
 style "notebook"
 {
-	xthickness = 0
-	ythickness = 1
+	xthickness = 4
+	ythickness = 0
 
-	bg[NORMAL]				= shade (1.06, @bg_color)	# selected tab entire
-	bg[ACTIVE]				= shade (0.85, @bg_color)	# unselected tab
+	bg[NORMAL]				= @bg_color	# selected tab entrie
+	bg[ACTIVE]				= shade (1.05, @bg_color)	# unselected tab
 
 	engine "murrine" {
 		roundness			= 4
 	}
 }
-widget_class "*<GtkNotebook>*<GtkEventBox>"     style "notebook"
-widget_class "*<GtkNotebook>*<GtkDrawingArea>"  style "notebook"
-widget_class "*<GtkNotebook>*<GtkLayout>"       style "notebook"
-widget_class "*<GtkNotebook>"    		style "notebook"
+class "GtkNotebook"  style "notebook"
 
-style "notebook-label" {
-	xthickness = 20
+style "notebook-fix" {
+	xthickness = 0
+	ythickness = 1
 }
-widget_class "*<GtkNotebook>*<GtkLabel>"	style "notebook-label"
+widget_class "GtkNotebook*"  style "notebook-fix"
+widget_class "*<GtkNotebook>*<GtkEventBox>" style "notebook-fix"
+widget_class "*<GtkNotebook>*<GtkDrawingArea>" style "notebook-fix"
+widget_class "*<GtkNotebook>*<GtkLayout>" style "notebook-fix"
+widget_class "*<GtkNotebook>*<GtkViewport>" style "notebook-fix"
+widget_class "*<GtkNotebook>.GtkLabel*" style "notebook-fix"
+widget_class "*<GeditNotebook>" style "notebook-fix"
+widget_class "*<GeanyNotebook>" style "notebook-fix"
 
 style "notebook-close"
 {
@@ -710,8 +682,6 @@ class "GtkInfoBar"				style "default"
 class "GtkIconView"				style "default"
 
 class "GtkSpinButton"  				style "aurora-default"
-widget_class "*<GtkRadioButton>*" 		style "aurora-default"
-widget_class "*<GtkCheckButton>*" 		style "aurora-default"
 
 
 
@@ -977,4 +947,5 @@ include "Apps/postler.rc"
 include "Apps/steadyflow.rc"
 include "Apps/totem.rc"
 include "Apps/banshee.rc"
+
 

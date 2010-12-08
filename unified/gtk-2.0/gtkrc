@@ -277,8 +277,10 @@ widget_class "*<GtkComboBoxEntry>*"         		style "comboboxentry"
 
 
 style "color-button" {
-	xthickness = 1
-	ythickness = 1
+	xthickness = 0
+	ythickness = 0
+
+	
 }
 class "GtkColorButton"         		style "color-button"
 
@@ -527,6 +529,15 @@ style "scrolled-window" {
 }
 class "GtkScrolledWindow"			style "scrolled-window"
 
+style "menubar" {
+	ythickness = 3
+
+	fg[NORMAL] = "#3E3E3E"
+	GtkMenuBar::internal-padding     = 0
+	GtkMenuBar:: shadow-type		= GTK_SHADOW_NONE
+}
+widget_class "*<GtkMenuBar>*"           	style "menubar"
+
 style "menu" {
 	GtkMenu        ::horizontal-padding   = 0
 	GtkMenu        ::vertical-padding     = 3
@@ -554,8 +565,8 @@ style "menu" {
 class "GtkMenu"              	style "menu"
 
 style "menu-item" {
-	xthickness = 1
-	ythickness = 3
+	xthickness = 2
+	ythickness = 2
 
 	fg[PRELIGHT] = @selected_fg_color
 	bg[SELECTED] = shade (0.98, @selected_bg_color)
@@ -566,28 +577,6 @@ style "menu-item" {
 }
 class "GtkMenuItem"          	style "menu-item"
 
-style "combo-menuitem" {
-	xthickness = 1
-	ythickness = 30
-
-	fg[PRELIGHT] = @selected_fg_color
-	bg[SELECTED] = shade (0.98, @selected_bg_color)
-
-	engine "murrine" {
-		roundness = 3
-	}
-}
-#widget_class "*<GtkComboBox>*.*<GtkMenuItem>*"          	style "combo-menuitem"
-
-style "menubar" {
-	ythickness = 3
-
-	fg[NORMAL] = "#3E3E3E"
-	GtkMenuBar     ::internal-padding     = 0
-	GtkMenuBar	:: shadow-type		= GTK_SHADOW_NONE
-}
-
-widget_class "*<GtkMenuBar>*"           	style "menubar"
 
 
 style "image" {
@@ -595,10 +584,7 @@ style "image" {
 }
 class "GtkImage"				style "image"
 
-style "menubar" {
-	fg[NORMAL] = "#3E3E3E"
-	GtkMenuBar     ::internal-padding     = 0
-}
+
 widget_class "*<GtkMenu>*"              	style "menu"
 
 style "scale" = "murrine-wider"
@@ -783,7 +769,7 @@ widget_class "*.<GtkComboBox>.<GtkCellView>"	style "murrine-combobox-text-color-
 style "murrine-menuitem-text-is-fg-color-workaround"
 {
 	xthickness = 0
-	ythickness = 1
+	ythickness = 0
 
 	text[NORMAL]        = @fg_color
 	text[PRELIGHT]      = @selected_fg_color
@@ -889,6 +875,7 @@ style "eclipse-slimdown-workaround" {
 
 style "top-panel" {
 	font_name = "Bold"
+	xthickness = 10
 }
 
 widget "*PanelWidget*" style "top-panel"

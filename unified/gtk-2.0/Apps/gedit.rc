@@ -1,5 +1,6 @@
-style "gedit-frame"
-{	
+style "gedit-frame" {
+	ythickness = 1
+	
 	engine "pixmap"
 	{
  		image

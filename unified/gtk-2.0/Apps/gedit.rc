@@ -9,6 +9,7 @@ style "gedit-frame"
 		}
 	}
 }
+widget_class "*Gedit*.<GtkFrame>*"     			style "gedit-frame"
 
 style "encodings-combobox" {
 	xthickness = 1
@@ -83,6 +84,7 @@ style "pathbar"
 		}
 	}
 }
+#widget_class "*GeditFileChooserDialog*GtkPathBar*.*ToggleButton*"     	style "pathbar"
 
 style "left-slider"
 {
@@ -99,8 +101,8 @@ style "left-slider"
 			stretch			= TRUE
 		}
 	}
-
 }
+#widget_class "GeditFileChooserDialog*GtkPathBar*GtkButton*"			style "left-slider" 
 
 style "murrine-gedit-historyentry" {
 	xthickness = 4
@@ -111,7 +113,7 @@ style "murrine-gedit-historyentry" {
 
 	GtkComboBox::shadow_type = GTK_SHADOW_NONE
 }
-widget_class "*Gedit*HistoryEntry*"         		style "murrine-gedit-historyentry"
+#widget_class "*Gedit*HistoryEntry*"         		style "murrine-gedit-historyentry"
 
 style "murrine-gedit-historyentry-button" {
 	xthickness = 0
@@ -119,7 +121,7 @@ style "murrine-gedit-historyentry-button" {
 
 	GtkButton::inner-border = {2, 1, 1, 1}
 }
-widget_class "*Gedit*HistoryEntry*GtkButton*"		style "murrine-gedit-historyentry-button"
+#widget_class "*Gedit*HistoryEntry*GtkButton*"		style "murrine-gedit-historyentry-button"
 
 style "right-slider"
 {	
@@ -137,16 +139,18 @@ style "right-slider"
 		}
 	}
 }
+#widget_class "GeditFileChooserDialog*GtkPathBar*right_slider*"		style "right-slider"
 
 
-widget_class "*Gedit*.<GtkFrame>*"     			style "gedit-frame"
-widget_class "*Gedit*.<GtkScrolledWindow>"     		style "murrine-thin"
+widget_class "*Gedit*.<GtkScrolledWindow>"    		style "murrine-thin"
 widget_class "*Gedit*.<GtkArrow>*"     			style:highest "murrine-default"
 
+style "gedit-scrolledwindow" {
+	xthickness = 1
+	ythickness = 1
+}
+widget_class "*GeditFileChooserDialog*.<GtkScrolledWindow>"     style "gedit-scrolledwindow"
 
-#widget_class "*GeditFileChooserDialog*GtkPathBar*.*ToggleButton*"     	style "pathbar"
-#widget_class "GeditFileChooserDialog*GtkPathBar*GtkButton*"			style "left-slider" 
-#widget_class "GeditFileChooserDialog*GtkPathBar*right_slider*"		style "right-slider"
 
 style "gedit" {
 	GtkComboBox::appears-as-list = 0

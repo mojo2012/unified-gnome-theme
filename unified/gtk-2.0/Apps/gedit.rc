@@ -142,6 +142,20 @@ style "right-slider"
 }
 #widget_class "GeditFileChooserDialog*GtkPathBar*right_slider*"		style "right-slider"
 
+style "gedit-notebook" {
+	xthickness		= 1
+	ythickness		= 0
+
+	bg[NORMAL]	= @base_color
+	bg[SELECTED]	= @selected_bg_color
+
+	engine "murrine" {
+		roundness = 10
+		contrast = 0.5
+	}
+}
+widget_class "*GeditNotebook*"				style "gedit-notebook"
+
 
 widget_class "*Gedit*.<GtkScrolledWindow>"    		style "murrine-thin"
 widget_class "*Gedit*.<GtkArrow>*"     			style:highest "murrine-default"

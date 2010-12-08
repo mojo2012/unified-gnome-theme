@@ -171,6 +171,15 @@ style "aurora-default" {
 
 
 
+style "slim-down" {
+	xthickness = 4
+	ythickness = 0
+}
+class "GtkCellView"				style "slim-down"
+class "GtkAccelLable"				style "slim-down"
+class "GtkImage"				style "slim-down"
+class "GtkLabel"				style "slim-down"
+
 
 
 
@@ -240,15 +249,15 @@ style "combobox" {
 	xthickness = 3
 	ythickness = 3
 
-	GtkComboBox::appears-as-list = 1
+	GtkComboBox::appears-as-list = 0
 
-	GtkComboBox::arrow-size = 15
+	GtkComboBox::arrow-size = 13
 }
 class "GtkComboBox"         		style "combobox"
 
 style "combobox-textentry" {
 	xthickness = 3
-	ythickness = 2
+	ythickness = 1
 
 	engine "aurora" { 		
 		curvature			= 2.0
@@ -488,18 +497,17 @@ style "scrollbar"
 		roundness			= 6
 		gradient_shades     		= {1.4,0.96,0.9,1.10}
 		#gradient_shades			= {1.0,1.0,1.0,1.0}
-		highlight_shade			= 1.0
+		highlight_shade			= 0.95
 		glow_shade			= 1.0
 		reliefstyle			= 0
-		gradient_colors			= FALSE
     		lightborder_shade		= 0.9
 		lightborderstyle		= 1
 		#trough_shades	        	= { 2.0, 1.1}	
 		trough_shades	        	= { 0.95, 1.1}
 		#border_shades			= { 2.0, 2.0}
 		border_shades 			= {1.0, 0.9}
-		contrast			= 0.4
-		prelight_shade			= 1.0
+		contrast			= 1.0
+		gradient_colors			= FALSE
 	}
 }
 class "GtkScrollbar"   				style "scrollbar"
@@ -543,7 +551,7 @@ style "menu" {
 		lightborderstyle		= 0
 	}
 }
-widget_class "*<GtkMenu>*"              	style "menu"
+class "GtkMenu"              	style "menu"
 
 style "menu-item" {
 	xthickness = 1
@@ -556,7 +564,7 @@ style "menu-item" {
 		roundness = 3
 	}
 }
-widget_class "*<GtkMenuItem>*"          	style "menu-item"
+class "GtkMenuItem"          	style "menu-item"
 
 style "combo-menuitem" {
 	xthickness = 1
@@ -774,6 +782,9 @@ widget_class "*.<GtkComboBox>.<GtkCellView>"	style "murrine-combobox-text-color-
 
 style "murrine-menuitem-text-is-fg-color-workaround"
 {
+	xthickness = 0
+	ythickness = 1
+
 	text[NORMAL]        = @fg_color
 	text[PRELIGHT]      = @selected_fg_color
 	text[SELECTED]      = @selected_fg_color
@@ -949,3 +960,10 @@ include "Apps/totem.rc"
 include "Apps/banshee.rc"
 
 
+
+#TODO
+#class "GtkFileChooserButton"			style "slim-down"
+#class "GtkFontButton"			style "slim-down"
+
+#class "GtkLinkButton"			style "slim-down"
+#class "GtkToolPalette"			style "slim-down"

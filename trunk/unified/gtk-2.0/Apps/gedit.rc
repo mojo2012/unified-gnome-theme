@@ -1,5 +1,5 @@
 style "gedit-frame" {
-	ythickness = 1
+	ythickness = 2
 	
 	engine "pixmap"
 	{

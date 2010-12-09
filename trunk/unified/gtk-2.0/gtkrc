@@ -962,6 +962,7 @@ include "Apps/postler.rc"
 include "Apps/steadyflow.rc"
 include "Apps/totem.rc"
 include "Apps/banshee.rc"
+include "Apps/chrome.rc"
 
 
 

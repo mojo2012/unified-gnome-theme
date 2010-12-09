@@ -1,12 +1,12 @@
-widget "*TerminalWindow"				style "murrine-dark"
+#widget "*TerminalWindow"				style "murrine-dark"
 
-style "terminal-screen" = "murrine-dark"
+style "terminal-screen"
 {
-	base[NORMAL]				= "#000000"
+	#base[NORMAL]				= "#000000"
 	
-	TerminalScreen::background-darkness	= 0.75
+	TerminalScreen::background-darkness	= 0.90
 }
-widget "*TerminalWindow.*.TerminalScreen*"              style "terminal-screen"
+#widget "*TerminalWindow.*.TerminalScreen*"              style "terminal-screen"
 
 style "terminal-scrollbar"
 {
@@ -17,19 +17,27 @@ style "terminal-scrollbar"
 		#prelight_shade			= 1.35
 	}
 }
-widget "*TerminalWindow.*.GtkVScrollbar"		style "terminal-scrollbar"
+#widget "*TerminalWindow.*.GtkVScrollbar"		style "terminal-scrollbar"
 
 style "terminal-window-base" {
 	xthickness = 0
-	#base[NORMAL]				= "#000000"
+	base[NORMAL]				= "#FFFFFF"
+	bg[NORMAL]				= "#FFFFFF"
 }
-widget_class "*TerminalWindow*"				style "terminal-window-base"
+#widget "*TerminalWindow*"				style "terminal-window-base"
 
 
 style "terminal-notebook" {
-	xthickness = 0
-	#base[NORMAL]				= "#505050"
-	#bg[NORMAL]				= "#909090"
+	xthickness		= 0
+	ythickness		= 0
+
+	bg[NORMAL]	= @base_color
+	bg[SELECTED]	= @selected_bg_color
+
+	engine "murrine" {
+		roundness = 10
+		contrast = 0.5
+	}
 }
 widget_class "*TerminalWindow*<GtkNotebook>"				style "terminal-notebook"
 

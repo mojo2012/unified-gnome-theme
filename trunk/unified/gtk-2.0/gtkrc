@@ -496,8 +496,7 @@ widget_class "*<GtkProgressBar>"       		style "progressbar"
 
 
 
-style "scrollbar"
-{
+style "scrollbar" {
 #	xthickness = 10
 
 	GtkScrollbar				:: slider_width = 10
@@ -520,12 +519,12 @@ style "scrollbar"
 		glow_shade			= 1.0
 		reliefstyle			= 0
     		lightborder_shade		= 0.9
-		lightborderstyle		= 1
+		lightborderstyle		= 0
 		#trough_shades	        	= { 2.0, 1.1}	
 		trough_shades	        	= { 0.95, 1.1}
 		#border_shades			= { 2.0, 2.0}
 		border_shades 			= {1.0, 0.9}
-		contrast			= 1.0
+		contrast			= 0.0
 		gradient_colors			= FALSE
 	}
 }
@@ -667,8 +666,22 @@ widget_class "*<GtkNotebook>*"    		style "notebook-close"
 
 style "aurora-statusbar"
 {
-	ythickness				= 0
-	engine "aurora" {}
+	ythickness	= 0
+	xthickness	= 3
+
+	engine "pixmap" 
+	{
+
+	    image
+	    {
+	     	function	= RESIZE_GRIP
+		recolorable	= TRUE
+		detail		= "statusbar"
+		overlay_file	= "/nautilus/resize_grip.png"
+		overlay_border	= {0,0,0,0 }
+		overlay_stretch	= FALSE
+	    }
+      }
 }
 widget_class "*<GtkStatusbar>*"  		style "aurora-statusbar"
 
@@ -963,7 +976,7 @@ include "Apps/postler.rc"
 include "Apps/steadyflow.rc"
 include "Apps/totem.rc"
 include "Apps/banshee.rc"
-include "Apps/chrome.rc"
+#include "Apps/chrome.rc"
 
 
 

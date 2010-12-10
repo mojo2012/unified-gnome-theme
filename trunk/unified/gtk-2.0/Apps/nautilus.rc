@@ -92,6 +92,18 @@ style "nautilus-notebook"
 		contrast = 0.5
 	}
 }
+widget_class	"*Nautilus*Notebook"			style "nautilus-notebook"
+
+style "nautilus-notebook-close-button" {
+	xthickness		= 0
+	ythickness		= 0
+
+	engine "murrine" {
+		roundness = 10
+		contrast = 0.4
+	}
+}
+widget_class "*Nautilus*Notebook*Button*"	style "nautilus-notebook-close-button"
 
 style "nautilus-scale"
 {
@@ -358,8 +370,6 @@ widget_class	"*Nautilus*View*"			style "nautilus-view"
 widget_class	"*Nautilus*NautilusSidePane*"		style "nautilus-sidebar"
 widget_class	"*Nautilus*Statusbar*"			style "nautilus-statusbar"
 widget_class	"*Nautilus*Scale*"			style "nautilus-scale"
-widget_class	"*Nautilus*Notebook"			style "nautilus-notebook"
-
 
 
 widget		"*GtkModeButton*"			style "nautilus-mode-button"

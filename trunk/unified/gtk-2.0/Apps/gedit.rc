@@ -31,7 +31,7 @@ style "gedit-notebook-close-button" {
 			function        	= BOX
 			recolorable     	= TRUE
 			state				= PRELIGHT
-			file				= "/pixmaps/null.png"
+			file				= "pixmaps/null.png"
 			border				= { 0, 0, 0, 0 }
 			stretch         	= TRUE
 		}

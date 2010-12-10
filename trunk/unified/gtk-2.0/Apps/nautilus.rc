@@ -95,11 +95,18 @@ style "nautilus-notebook"
 widget_class	"*Nautilus*Notebook"			style "nautilus-notebook"
 
 style "nautilus-notebook-close-button" {
-	xthickness		= 0
+	xthickness		= 10
 	ythickness		= 0
 
+	GtkButton::interior-focus = 1
+
+	bg[PRELIGHT]		= @bg_color
+	bg[SELECTED]		= @bg_color
+	bg[INSENSITIVE]		= @bg_color
+	bg[ACTIVE]		= @bg_color
+
 	engine "murrine" {
-		roundness = 10
+		roundness = 8
 		contrast = 0.4
 	}
 }

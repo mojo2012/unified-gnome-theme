@@ -147,7 +147,10 @@ style "gedit-notebook" {
 	ythickness		= 0
 
 	bg[NORMAL]	= @base_color
-	bg[SELECTED]	= @selected_bg_color
+	#bg[PRELIGHT]	= @base_color
+	#bg[ACTIVE]	= @selected_bg_color
+	bg[INSENSITIVE] = @base_color
+	bg[SELECTED]	= @base_color
 
 	engine "murrine" {
 		roundness = 10

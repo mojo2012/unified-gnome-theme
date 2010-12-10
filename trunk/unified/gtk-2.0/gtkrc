@@ -637,6 +637,7 @@ style "notebook"
 	ythickness = 0
 
 	bg[NORMAL]				= @bg_color	# selected tab entrie
+	bg[SELECTED]				= @bg_color	# selected tab entrie
 	bg[ACTIVE]				= shade (1.05, @bg_color)	# unselected tab
 
 	engine "murrine" {
@@ -649,7 +650,7 @@ style "notebook-fix" {
 	xthickness = 0
 	ythickness = 1
 }
-widget_class "GtkNotebook*"  style "notebook-fix"
+#widget_class "GtkNotebook*"  style "notebook-fix"
 widget_class "*<GtkNotebook>*<GtkEventBox>" style "notebook-fix"
 widget_class "*<GtkNotebook>*<GtkDrawingArea>" style "notebook-fix"
 widget_class "*<GtkNotebook>*<GtkLayout>" style "notebook-fix"

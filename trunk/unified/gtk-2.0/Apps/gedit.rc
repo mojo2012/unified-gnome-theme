@@ -26,25 +26,25 @@ style "gedit-notebook-close-button" {
 	#}
 
 
-	engine "pixmap" {
-		image {
-			function        	= BOX
-			recolorable     	= TRUE
-			state				= PRELIGHT
-			file				= "pixmaps/null.png"
-			border				= { 0, 0, 0, 0 }
-			stretch         	= TRUE
-		}
-
-		image {
-			function        	= BOX
-			recolorable     	= TRUE
-			state				= ACTIVE
-			file				= "/pixmaps/null.png"
-			border				= { 0, 0, 0, 0 }
-			stretch         	= TRUE
-		}
-	}
+#	engine "pixmap" {
+#		image {
+#			function        	= BOX
+#			recolorable     	= TRUE
+#			state				= PRELIGHT
+#			file				= "pixmaps/null.png"
+#			border				= { 0, 0, 0, 0 }
+#			stretch         	= TRUE
+#		}
+#
+#		image {
+#			function        	= BOX
+#			recolorable     	= TRUE
+#			state				= ACTIVE
+#			file				= "/pixmaps/null.png"
+#			border				= { 0, 0, 0, 0 }
+#			stretch         	= TRUE
+#		}
+#	}
 }
 widget_class "*GeditNotebook*Button*"				style "gedit-notebook-close-button"
 
@@ -204,9 +204,16 @@ style "gedit-scrolledwindow" {
 widget_class "*GeditFileChooserDialog*.<GtkScrolledWindow>"     style "gedit-scrolledwindow"
 
 
+style "gedit-scrollbar" = "scrollbar" {
+	bg[NORMAL]	= @bg_color
+	bg[INSENSITIVE] = @bg_color
+	bg[SELECTED]	= @selected_bg_color
+}
+widget_class "*Gedit*Scrollbar*"				style "gedit-scrollbar"
+
+
+
 style "gedit" {
 	GtkComboBox::appears-as-list = 0
 }
 widget_class "*Gedit*"     			style "gedit"
-
-widget_class "*Gedit*Scrollbar*"				style "scrollbar"

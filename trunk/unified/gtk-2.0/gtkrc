@@ -966,6 +966,9 @@ style "swt-progressbar" {
 }
 widget "*SwtFixed*Progress*" style	"swt-progressbar"
 
+
+
+
 include "Apps/eog.rc"
 include "Apps/gedit.rc"
 include "Apps/gnome-terminal.rc"

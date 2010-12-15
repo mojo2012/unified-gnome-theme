@@ -886,23 +886,18 @@ style "murrine-wide-dark"	=	"murrine-dark"	{ xthickness = 2 ythickness = 2 }
 style "murrine-wider-dark"	=	"murrine-dark"	{ xthickness = 3 ythickness = 3 }
 
 
-style "firefox-slimdown-workaround" {
+style "mozilla-slimdown-workaround" {
 	xthickness = 3
 	ythickness = 4
 }
-widget "*Mozilla*"			style "firefox-slimdown-workaround"
+widget "*Mozilla*"					style "mozilla-slimdown-workaround"
 
-style "firefox-button" {
-	ythickness = 4
+style "mozilla-progressbar" {
+	xthickness = 0
+	ythickness = 0
 }
-#widget "*Mozilla*Button*"		style "firefox-button"
+widget "*Mozilla*Progress*"				style "mozilla-progressbar"
 
-
-style "eclipse-slimdown-workaround" {
-	xthickness = 3
-	ythickness = 4
-}
-#widget "*eclipse*"			style "eclipse-slimdown-workaround"
 
 style "top-panel" {
 	font_name = "Bold"
@@ -964,6 +959,12 @@ style "swt-combobox-fix" {
 	ythickness = 3
 }
 widget "*SwtFixed*Combo*Entry*" style	"swt-combobox-fix"
+
+style "swt-progressbar" {
+	xthickness = 0
+	ythickness = 0
+}
+widget "*SwtFixed*Progress*" style	"swt-progressbar"
 
 include "Apps/eog.rc"
 include "Apps/gedit.rc"

@@ -41,5 +41,13 @@ style "terminal-notebook" {
 }
 widget_class "*TerminalWindow*<GtkNotebook>"				style "terminal-notebook"
 
+style "terminal-content" {
+	engine "murrine" {
+		roundness = 10
+		contrast = 0.5
+	}
+}
+widget_class "*TerminalWindow*<GtkNotebook>*"				style "terminal-content"
+
 
 

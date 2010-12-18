@@ -4,3 +4,4 @@ style "chrome-button" {
 	ythickness = 0
 }
 widget_class "*Chrom*GtkToolItem*"				style "chrome-button"
+

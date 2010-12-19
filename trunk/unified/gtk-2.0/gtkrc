@@ -262,15 +262,16 @@ style "button-box" {
 }
 class "GtkButtonBox"      		style "button-box"
 
+#TODO: bug in qt comboboxes??
 style "combobox" {
-	xthickness = 3
-	ythickness = 3
+	#xthickness = 3
+	#ythickness = 3
 
-	GtkComboBox::appears-as-list = 0
+	#GtkComboBox::appears-as-list = 0
 
-	GtkComboBox::arrow-size = 13
+	#GtkComboBox::arrow-size = 13
 }
-class "GtkComboBox"         		style "combobox"
+#class "GtkComboBox"         		style "combobox"
 
 style "combobox-textentry" {
 	xthickness = 3
@@ -667,18 +668,18 @@ widget_class "*<GtkNotebook>*"    		style "notebook-close"
 style "aurora-statusbar"
 {
 	ythickness	= 0
-	xthickness	= 3
+	xthickness	= 0
 
 	engine "pixmap" 
 	{
-
 	    image
 	    {
 	     	function	= RESIZE_GRIP
 		recolorable	= TRUE
 		detail		= "statusbar"
 		overlay_file	= "/nautilus/resize_grip.png"
-		overlay_border	= {0,0,0,0 }
+		#overlay_border	= {30,30,30,30 }
+		#border		= { 3, 13, 3, 3 }
 		overlay_stretch	= FALSE
 	    }
       }
@@ -990,3 +991,10 @@ include "Apps/chrome.rc"
 
 #class "GtkLinkButton"			style "slim-down"
 #class "GtkToolPalette"			style "slim-down"
+
+
+style "qt" {
+	xthickness = 0
+	ythickness = 0
+}
+#widget_class "*"			style "qt"

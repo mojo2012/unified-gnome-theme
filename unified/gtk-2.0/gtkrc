@@ -901,7 +901,7 @@ widget "*Mozilla*Progress*"				style "mozilla-progressbar"
 
 
 style "top-panel" {
-	font_name = "Lucida Sans Bold 9.5"
+	font_name = "Bold"
 	xthickness = 10
 }
 
@@ -986,7 +986,7 @@ include "Apps/chrome.rc"
 
 
 #TODO
-#class "GtkFileChooserButton"			style "slim-down"
+#class "GtkFileChooserButton"		style "slim-down"
 #class "GtkFontButton"			style "slim-down"
 
 #class "GtkLinkButton"			style "slim-down"

@@ -38,15 +38,48 @@ style "nautilus-handle"
 	}
 }
 
-style "nautilus-extra-view"
-{
-
-	xthickness		= 0
+style "nautilus-extra-view" {
+	xthickness		= 5
 	ythickness		= 0
 
-	bg_pixmap[NORMAL]	= "/nautilus/extra-widget.png"
+	bg[NORMAL]	= @base_color
 
+	engine "murrine" {
+		roundness = 10
+		contrast = 0.5
+	}
 }
+
+style "nautilus-extra-view-label" {
+	fg[NORMAL]	= mix (0.4, @base_color, @text_color)
+	fg[PRELIGHT]	= mix (0.4, @base_color, @text_color)
+	fg[SELECTED]	= mix (0.4, @base_color, @text_color)
+	fg[ACTIVE]	= mix (0.4, @base_color, @text_color)
+	fg[INSENSITIVE]	= mix (0.4, @base_color, @text_color)
+}
+widget_class "*NautilusXContentBar*GtkLabel*" 			style : highest "nautilus-extra-view-label"
+
+style "nautilus-extra-view-button" {
+	xthickness		= 4
+	ythickness		= 0
+
+	fg[NORMAL]	= @fg_color
+	fg[PRELIGHT]	= @fg_color
+	fg[SELECTED]	= @selected_fg_color
+	fg[ACTIVE]	= @fg_color
+	fg[INSENSITIVE]	= @fg_color
+
+	engine "murrine" {
+		roundness = 10
+		contrast = 0.5
+	}
+}
+widget_class "*NautilusXContentBar*GtkButton*" 			style : highest "nautilus-extra-view-button"
+
+style "nautilus-extra-view-button-label" {
+	xthickness = 10
+}
+widget_class "*NautilusXContentBar*GtkButton*" 			style : highest "nautilus-extra-view-button-label"
 
 style "nautilus-statusbar"
 {
@@ -370,14 +403,13 @@ style "nautilus-togglebutton" {
 }
 widget_class "*Nautilus*GtkToggleButton*"	style "nautilus-togglebutton"
 
-
 widget		"*NautilusNavigationWindow"		style "nautilus-window-base"
 widget		"*Nautilus*Splitter"			style "nautilus-handle"
 widget_class	"*Nautilus*View*"			style "nautilus-view"
 widget_class	"*Nautilus*NautilusSidePane*"		style "nautilus-sidebar"
 widget_class	"*Nautilus*Statusbar*"			style "nautilus-statusbar"
 widget_class	"*Nautilus*Scale*"			style "nautilus-scale"
-
+ 
 
 widget		"*GtkModeButton*"			style "nautilus-mode-button"
 
@@ -391,4 +423,19 @@ widget "Nautilus*left_slider*"				style "nautilus-left-slider"
 widget "Nautilus*right_slider*"				style "nautilus-right-slider"
 
 
+style "statusbar-toggle-button" {
+	ythickness = 0
+	xthickness = 5
 
+	engine "pixmap" {
+		image {
+			function        	= BOX
+			recolorable     	= TRUE
+			state				= PRELIGHT
+			file				= "pixmaps/null.png"
+			border				= { 0, 0, 0, 0 }
+			stretch         	= TRUE
+		}
+	}
+}
+widget_class "*Nautilus*NautilusHorizontalSplitter*GtkToggleButton*"			style "statusbar-toggle-button"

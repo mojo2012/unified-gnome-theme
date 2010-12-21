@@ -677,7 +677,7 @@ style "aurora-statusbar"
 	     	function	= RESIZE_GRIP
 		recolorable	= TRUE
 		detail		= "statusbar"
-		overlay_file	= "/nautilus/resize_grip.png"
+		overlay_file	= "/pixmaps/resize_grip.png"
 		#overlay_border	= {30,30,30,30 }
 		#border		= { 3, 13, 3, 3 }
 		overlay_stretch	= FALSE

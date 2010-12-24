@@ -550,17 +550,18 @@ style "menubar" {
 	ythickness = 3
 
 	fg[NORMAL] = "#3E3E3E"
-	GtkMenuBar::internal-padding     = 0
+	GtkMenuBar:: internal-padding     = 0
 	GtkMenuBar:: shadow-type		= GTK_SHADOW_NONE
 }
 widget_class "*<GtkMenuBar>*"           	style "menubar"
 
 style "menu" {
 	GtkMenu        ::horizontal-padding   = 0
-	GtkMenu        ::vertical-padding     = 3
+	GtkMenu        ::vertical-padding     = 0
 
 	xthickness = 0	
-	
+	ythickness = 3
+
 	GtkMenu::horizontal-offset = -3
 	GtkMenu::vertical-offset = 0
 	

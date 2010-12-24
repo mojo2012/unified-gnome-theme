@@ -11,6 +11,6 @@ Name[de_AT]=unified
 [X-GNOME-Metatheme]
 GtkTheme=unified
 MetacityTheme=elementary
-IconTheme=elementary
+IconTheme=unified
 CursorTheme=DMZ-Black
 ButtonLayout=close,minimize,maximize:

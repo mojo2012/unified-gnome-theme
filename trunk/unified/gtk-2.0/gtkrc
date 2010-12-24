@@ -901,7 +901,7 @@ widget "*Mozilla*Progress*"				style "mozilla-progressbar"
 
 
 style "top-panel" {
-	font_name = "Bold"
+	font_name = "Bold 10"
 	xthickness = 10
 }
 

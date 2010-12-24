@@ -24,8 +24,8 @@ gtk-auto-mnemonics	= 1									# Disables ugly lines under menu items
 
 style "default"
 {
-	xthickness		= 1
-	ythickness		= 1
+	xthickness		= 3
+	ythickness		= 0
 
 	GtkDialog::action-area-border		= 6
 	#GtkDialog::button-spacing		= 0
@@ -559,10 +559,14 @@ style "menu" {
 	GtkMenu        ::horizontal-padding   = 0
 	GtkMenu        ::vertical-padding     = 3
 
+	xthickness = 0	
+	
 	GtkMenu::horizontal-offset = -3
 	GtkMenu::vertical-offset = 0
 	
 	GtkMenu::double-arrows = FALSE
+
+	#font_name = "Bold"
 
 	fg[PRELIGHT]				= @selected_fg_color
 	fg[SELECTED]				= @selected_fg_color

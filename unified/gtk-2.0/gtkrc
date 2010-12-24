@@ -634,14 +634,14 @@ widget "xfwm4-tabwin*"				style "xfwm4-tabwin"
 style "notebook"
 {
 	xthickness = 4
-	ythickness = 0
+	ythickness = 1
 
 	bg[NORMAL]				= @bg_color	# selected tab entrie
 	bg[SELECTED]				= @bg_color	# selected tab entrie
 	bg[ACTIVE]				= shade (1.05, @bg_color)	# unselected tab
 
 	engine "murrine" {
-		roundness			= 4
+		roundness			= 6
 	}
 }
 class "GtkNotebook"  style "notebook"

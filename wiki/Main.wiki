@@ -1,0 +1,8 @@
+#the main page
+
+= Introduction =
+
+This is a theme for Ubuntu (or Gnome in general). It is based on the very popular elementary theme but has some important improvements: the widgets have been slimmed down to better use the screen real estate.
+So basically, the Gnome UI doesn't look like that bloated anymore.
+
+

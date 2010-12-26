@@ -292,6 +292,10 @@ style "nautilus-toolbutton"
 			stretch         	= TRUE
 		}
 	}
+
+	engine "murrine" {
+
+	}
 }
 #widget_class "*Nautilus*Toolbar*Button*"	style "nautilus-toolbutton"
 
@@ -400,6 +404,7 @@ widget_class	"*Nautilus*GtkToolbar*" 	style "nautilus-toolbar"
 style "nautilus-togglebutton" {
 	engine "murrine" {
 	}
+	
 }
 widget_class "*Nautilus*GtkToggleButton*"	style "nautilus-togglebutton"
 

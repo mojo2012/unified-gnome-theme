@@ -1,6 +1,6 @@
 style "postler-handle-horiz"
 {
-	GtkPaned::handle-size		= 2
+	GtkPaned::handle-size		= 0
 	
 	engine "pixmap"
 	{

@@ -1,88 +1,118 @@
+# ==============================================================================
+# GNOME PANEL SPECIFIC SETTINGS
+# ==============================================================================
 
-style "elementary-panel"
+style "panel" = "dark"
 {
-	xthickness		= 1
-	ythickness		= 0
+	xthickness = 0
+	ythickness = 0
 
-	bg_pixmap[NORMAL]	= "/Panel/panel-dark.png" # Disable for normal panel backgrounds.
-
-	fg[NORMAL]				= "#ffffff"
-	bg[NORMAL]				= shade (0.85, "#3B3B3B")
-	bg[ACTIVE]				= shade (0.85, "#3B3B3B")
-	bg[SELECTED]				= shade (0.85, "#3B3B3B")
-	bg[PRELIGHT]				= shade (0.85, "#3B3B3B")
+	bg_pixmap[NORMAL] = "Panel/panel-dark.png"
+	bg[NORMAL] = "#4b4a46"
 
 	engine "murrine" {
-		roundness			= 0
-		highlight_shade     		= 1.0 
-		lightborder_shade   		= 0.88
-		gradient_shades     		= {0.90,1.09,1.10,1.30}
-		contrast			= 1.05
-		border_shades 			= {1.2, 1.1}
-		textstyle			= 0
-	}
-
-}
-
-style "elementary-panel-handle" 
-{
-    engine "pixmap"
-    {    
-        image
-        {
-		function 	= HANDLE
-        }    
-    }
-}
-
-style "murrine-menu-calendar" = "murrine-thin"
-{
-	base[NORMAL]				= "#3B3B3B"
-	base[ACTIVE]				= "#555753"
-
-	engine "murrine"
-	{
-		roundness			= 1
+		#contrast = 1.0
+		textstyle = 2
+		text_shade = 0.35
 	}
 }
 
-style "murrine-menu-item" = "murrine-wider-dark"
+style "panel_task_button" = "dark"
 {
-	engine "murrine"
-	{
-		roundness			= 0
-		lightborderstyle		= 1
-		contrast			= 1.5
+	xthickness = 3
+	xthickness = 3
+
+	GtkWidget::focus-line-width        = 0
+	GtkWidget::focus_padding           = 0
+	GtkWidget::interior_focus          = 0
+	GtkWidget::internal_padding        = 0
+
+	GtkButton::child_displacement_x    = 0
+	GtkButton::child_displacement_y    = 0
+	GtkButton::default_border          = {0, 0, 0, 0}
+	GtkButton::default_outside_border  = {0, 0, 0, 0}
+	GtkButtonBox::child_internal_pad_x = 0
+	GtkButtonBox::child_internal_pad_y = 0
+	GtkButtonBox::child_min_heigth     = 0
+
+	engine "pixmap" {
+      
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state			= NORMAL
+			file            	= "img/panel-button-inactive.png"
+			border          	= { 1, 1, 1, 1 }
+			stretch         	= TRUE			
+		}
+		
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state			= PRELIGHT
+			file            	= "img/panel-button-hover.png"
+			border          	= { 1, 1, 1, 1 }
+			stretch         	= TRUE
+		}
+
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			shadow			= OUT
+			state			= PRELIGHT
+			file            	= "img/panel-button-hover.png"
+			border          	= { 1, 1, 1, 1 }
+			stretch         	= TRUE
+			
+		}
+		
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			shadow			= IN
+			state			= PRELIGHT
+			file            	= "img/panel-button-hover.png"
+			border          	= { 1, 1, 1, 1 }
+			stretch         	= TRUE
+			 
+		}
+		
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state			= ACTIVE
+			file            	= "img/panel-button-active.png"
+			border          	= { 4, 4, 4, 4 }
+			stretch         	= TRUE
+		}  
+		image
+		{
+			function        	= BOX
+			recolorable     	= TRUE
+			state			= INSENSITIVE
+			file            	= "img/panel-button-inactive.png"
+			border          	= { 1, 1, 1, 1 }
+			stretch         	 = TRUE
+		}
 	}
 }
 
-class "PanelApp*"				style "elementary-panel"
-class "PanelToplevel*"				style "elementary-panel"
-class "*Xfce*Panel*"				style "elementary-panel"
+#widget_class "*Panel*"            style "panel"
+widget "*PanelWidget*"            style "panel"
+widget "*PanelApplet*"            style "panel"
+widget "*fast-user-switch*"       style "panel" # workaround for Fast User Switch applet
+widget "*CPUFreqApplet*"          style "panel" # workaround for CpuFreq Applet
+class "PanelApp*"                 style "panel"
+class "PanelToplevel*"            style "panel"
+#widget_class "*Mail*"             style "panel"
+widget_class "*notif*"            style "panel"
 
-widget "*fast-user-switch*"			style "elementary-panel"
-widget "PanelToplevel*PanelAppletFrame"		style "elementary-panel"
-widget "PanelToplevel*PanelMenuBar"		style "elementary-panel"
-widget "PanelToplevel*PanelWidget*"		style "elementary-panel"
-widget "*Xfce*Panel*"				style "elementary-panel"
-
-widget_class "BonoboPlug*PanelApplet*"		style "elementary-panel"
-widget_class "*tray*"				style "elementary-panel"
-
-# Make sure panel text color doesn't change
-widget_class "*Panel*MenuBar*"			style "murrine-dark"
-widget_class "*Panel*<GtkMenuBar>*"		style "murrine-dark"
-widget "*.clock-applet-button.*"		style "murrine-dark"
-widget "*PanelApplet*"				style "murrine-dark"
-
-# Hide ugly handle
-class "PanelAppletFrame" 			style:highest "elementary-panel-handle"
-
-widget_class "*<GtkMenu>*"              	style "murrine-thin-dark"
-widget_class "*<GtkMenuItem>*"          	style "murrine-menu-item"
-widget_class "*<GtkMenuItem>.*.<GtkCalendar>"	style "murrine-menu-calendar"
-widget_class "*<GtkMenuItem>.*.<GtkScale>" 	style "murrine-scale"
-widget_class "*<GtkMenuBar>*"           	style "murrine-menubar"
-widget "*.gtk-combobox-popup-menu.*"   		style "murrine-dark"
-
-
+#widget_class "*?anel*utton"       style "panel_task_button" # causing problems to monodevelop
+widget "*task*"                   style "panel_task_button"
+widget "*.tasklist-button"        style "panel_task_button"
+widget "*PanelApplet*TaskTitle*"  style "panel_task_button"

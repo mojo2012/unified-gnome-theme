@@ -74,8 +74,8 @@ style "default"
 	GtkScale		::trough-side-details			= 1
 
 	GtkScrollbar		::min-slider-length			= 20
-	GtkScrollbar		::has-backward-stepper 			= 0
-	GtkScrollbar		::has-forward-stepper			= 0
+	GtkScrollbar		::has-backward-stepper 			= 1
+	GtkScrollbar		::has-forward-stepper			= 1
 
 	GtkScrolledWindow	::scrollbar-spacing			= 0
 	GtkScrolledWindow	::scrollbars-within-bevel		= 1
@@ -842,6 +842,33 @@ style "sidebar" {
 	GtkTreeView::even_row_color		= @sidebar_color
 }
 
+style "dark"
+{
+	fg[NORMAL]        = shade (1.06, @bg_color)
+	fg[PRELIGHT]      = shade (1.00, @bg_color)
+	fg[ACTIVE]        = shade (1.00, @bg_color)
+	fg[SELECTED]      = shade (1.00, @bg_color)
+	fg[INSENSITIVE]   = shade (1.50, @bg_color)
+
+	bg[NORMAL]        = shade (1.00, @bg_color_dark)
+	bg[PRELIGHT]      = @bg_color
+	bg[ACTIVE]        = @bg_color_dark #panel-selected-highlight
+	bg[SELECTED]      = shade (1.00, @selected_bg_color)
+	bg[INSENSITIVE]   = @text_color
+
+	base[NORMAL]      = shade (0.60, @selected_bg_color) #calender-background
+	base[PRELIGHT]    = @bg_color_dark
+	base[ACTIVE]      = @bg_color_dark
+	base[SELECTED]    = @bg_color_dark
+	base[INSENSITIVE] = @bg_color_dark
+
+	text[NORMAL]      = shade (1.06, @bg_color)
+	text[PRELIGHT]    = shade (1.06, @bg_color)
+	text[ACTIVE]      = @selected_bg_color
+	text[SELECTED]    = @selected_bg_color
+	text[INSENSITIVE] = shade (1.06, @bg_color)
+}
+
 style "murrine-scrollbar-dark" = "murrine-scrollbar"
 {	
 
@@ -974,7 +1001,8 @@ include "Apps/gedit.rc"
 include "Apps/gnome-terminal.rc"
 include "Apps/midori.rc"
 include "Apps/nautilus.rc"
-include "Apps/panel.rc"
+include "Apps/panel-dark.rc"
+#include "Apps/panel.rc"
 include "Apps/postler.rc"
 #include "Apps/rhythmbox.rc"
 include "Apps/steadyflow.rc"

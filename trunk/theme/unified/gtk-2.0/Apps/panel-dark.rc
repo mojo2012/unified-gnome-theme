@@ -17,90 +17,7 @@ style "panel" = "dark"
 	}
 }
 
-style "panel_task_button" = "dark"
-{
-	xthickness = 3
-	xthickness = 3
 
-	GtkWidget::focus-line-width        = 0
-	GtkWidget::focus_padding           = 0
-	GtkWidget::interior_focus          = 0
-	GtkWidget::internal_padding        = 0
-
-	GtkButton::child_displacement_x    = 0
-	GtkButton::child_displacement_y    = 0
-	GtkButton::default_border          = {0, 0, 0, 0}
-	GtkButton::default_outside_border  = {0, 0, 0, 0}
-	GtkButtonBox::child_internal_pad_x = 0
-	GtkButtonBox::child_internal_pad_y = 0
-	GtkButtonBox::child_min_heigth     = 0
-
-	engine "pixmap" {
-      
-		image
-		{
-			function        	= BOX
-			recolorable     	= TRUE
-			state			= NORMAL
-			file            	= "img/panel-button-inactive.png"
-			border          	= { 1, 1, 1, 1 }
-			stretch         	= TRUE			
-		}
-		
-		image
-		{
-			function        	= BOX
-			recolorable     	= TRUE
-			state			= PRELIGHT
-			file            	= "img/panel-button-hover.png"
-			border          	= { 1, 1, 1, 1 }
-			stretch         	= TRUE
-		}
-
-		image
-		{
-			function        	= BOX
-			recolorable     	= TRUE
-			shadow			= OUT
-			state			= PRELIGHT
-			file            	= "img/panel-button-hover.png"
-			border          	= { 1, 1, 1, 1 }
-			stretch         	= TRUE
-			
-		}
-		
-		image
-		{
-			function        	= BOX
-			recolorable     	= TRUE
-			shadow			= IN
-			state			= PRELIGHT
-			file            	= "img/panel-button-hover.png"
-			border          	= { 1, 1, 1, 1 }
-			stretch         	= TRUE
-			 
-		}
-		
-		image
-		{
-			function        	= BOX
-			recolorable     	= TRUE
-			state			= ACTIVE
-			file            	= "img/panel-button-active.png"
-			border          	= { 4, 4, 4, 4 }
-			stretch         	= TRUE
-		}  
-		image
-		{
-			function        	= BOX
-			recolorable     	= TRUE
-			state			= INSENSITIVE
-			file            	= "img/panel-button-inactive.png"
-			border          	= { 1, 1, 1, 1 }
-			stretch         	 = TRUE
-		}
-	}
-}
 
 #widget_class "*Panel*"            style "panel"
 widget "*PanelWidget*"            style "panel"
@@ -113,6 +30,6 @@ class "PanelToplevel*"            style "panel"
 widget_class "*notif*"            style "panel"
 
 #widget_class "*?anel*utton"       style "panel_task_button" # causing problems to monodevelop
-widget "*task*"                   style "panel_task_button"
-widget "*.tasklist-button"        style "panel_task_button"
-widget "*PanelApplet*TaskTitle*"  style "panel_task_button"
+#widget "*task*"                   style "panel_task_button"
+#widget "*.tasklist-button"        style "panel_task_button"
+#widget "*PanelApplet*TaskTitle*"  style "panel_task_button"
